@@ -1,3 +1,4 @@
-google-genai
-# Optional stretch — connecting an MCP tool:
+﻿ollama
+# Optional stretch -- connecting an MCP tool:
 mcp
+

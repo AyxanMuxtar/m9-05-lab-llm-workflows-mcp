@@ -1,0 +1,47 @@
+﻿============================================================
+  DEMO: Two-turn conversation with memory
+============================================================
+
+============================================================
+USER: What did order A1001 cost?
+============================================================
+
+--- Step 1 / 5 ---
+    Sending 1 message(s) to model [gemma4:e4b] ...
+    -> Tool call: lookup_order({'order_id': 'A1001'})
+    <- Tool result: {"item": "laptop", "price": 1200, "purchased": "2026-05-20", "warranty_months": 12, "order_id": "A1001"}
+
+--- Step 2 / 5 ---
+    Sending 3 message(s) to model [gemma4:e4b] ...
+
+MODEL (final answer): The total cost of order A1001 was . The laptop was purchased on May 20, 2026, and includes a 12-month warranty.
+
+[OK] Answer 1: The total cost of order A1001 was . The laptop was purchased on May 20, 2026, and includes a 12-month warranty.
+
+============================================================
+USER: And what about three of them?
+============================================================
+
+--- Step 1 / 5 ---
+    Sending 5 message(s) to model [gemma4:e4b] ...
+    -> Tool call: calculate({'expression': '1200 * 3'})
+    <- Tool result: {"result": 3600}
+
+--- Step 2 / 5 ---
+    Sending 7 message(s) to model [gemma4:e4b] ...
+
+MODEL (final answer): Three of them would cost .
+
+[OK] Answer 2: Three of them would cost .
+
+============================================================
+  Memory proof: full messages list after both turns
+============================================================
+  [0] USER: What did order A1001 cost?
+  [1] ASSISTANT -> TOOL CALL: lookup_order({'order_id': 'A1001'})
+  [2] TOOL <- TOOL RESULT: {"item": "laptop", "price": 1200, "purchased": "2026-05-20", "warranty_months": 12, "order_id": "A1001"}
+  [3] ASSISTANT: The total cost of order A1001 was . The laptop was purchased on May 20, 2026, and includes a 12-month warranty.
+  [4] USER: And what about three of them?
+  [5] ASSISTANT -> TOOL CALL: calculate({'expression': '1200 * 3'})
+  [6] TOOL <- TOOL RESULT: {"result": 3600}
+  [7] ASSISTANT: Three of them would cost .
